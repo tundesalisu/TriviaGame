@@ -1,0 +1,87 @@
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Simple Timer</title>
+
+</head>
+
+<body>
+
+
+    <h1>TRIVIA!!!!!!</h1>
+    <p id="time-left"></p>
+    <p id="wins"> </p>
+    <script>
+
+        askQuestion = [
+            { q: "Is money good", a: "t" },
+            { q: "Is driving faster than walking", a: "f" },
+            { q: "Is the world flat", a: "f" }
+        ];
+
+        var wins = 0;
+        var askQuest_index = 0;
+
+        function questions() {
+            if (askQuest_index <= (askQuestion.length - 1)) {
+                document.querySelector("#time-left").innerHTML = askQuestion[askQuest_index].q;
+            }
+            else {
+                document.querySelector("#time-left").innerHTML = "Final Score: " + wins;
+
+            }
+        }
+
+        function winup() {
+            document.querySelector("#wins").innerHTML = "wins: " + wins;
+        }
+
+        questions();
+        winup();
+
+        document.onkeyup = function (event) {
+            if (askQuest_index === askQuestion.length) {
+                return;
+            }
+            var userInput = event.key.toLowerCase();
+            if (userInput === "t" || userInput === "f") {
+                if (userInput === askQuestion[askQuest_index].a) {
+                    wins++;
+                    winup();
+
+                }
+                else { alert("false") }
+                askQuest_index++;
+                questions();
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
